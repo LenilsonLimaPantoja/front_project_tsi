@@ -27,6 +27,7 @@ const Login = () => {
         try {
             setLoading(true);
             const response = await axios.post(apiUrls.loginAdmUrl, formValues, requestOptions);
+            console.log(response.data);
 
             // Armazenar o token no cookie
             Cookies.set('token', response.data.retorno.registros.token, { expires: 7, secure: false, sameSite: 'Lax' });
@@ -46,7 +47,7 @@ const Login = () => {
 
     if (loading) {
         return (
-            <Loading/>
+            <Loading />
         );
     }
 
@@ -54,7 +55,7 @@ const Login = () => {
         <div className="body-login">
             <div className="container-login">
                 <div className="area-login">
-                    <DescriptionHeader descricao="Autenticação de acesso - Administrativo"/>
+                    <DescriptionHeader descricao="Autenticação de acesso - Administrativo" />
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email">
                             <apan>Email</apan>
@@ -66,7 +67,7 @@ const Login = () => {
                         </label>
                         <input type="submit" className="btn" value="Entrar" />
                     </form>
-                    <DescriptionHeader descricao="Autenticação de acesso - Estudante"/>
+                    <DescriptionHeader descricao="Autenticação de acesso - Estudante" />
                     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID} >
                         <LoginGoogle setLoading={setLoading} />
                     </GoogleOAuthProvider>
