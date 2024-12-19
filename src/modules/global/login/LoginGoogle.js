@@ -26,7 +26,7 @@ const LoginGoogle = ({ setLoading }) => {
         // Armazenar o token no cookie com opções de segurança
         Cookies.set('token', result.data.retorno.registros.token, {
           expires: 7, // Expira em 7 dias
-          secure: true, // Garante que o cookie seja enviado apenas via HTTPS
+          secure: false, // Garante que o cookie seja enviado apenas via HTTPS
           sameSite: 'Strict', // Previne o envio do cookie em requisições de outros sites
         });
         alertaSucesso(result.data?.retorno?.mensagem);
