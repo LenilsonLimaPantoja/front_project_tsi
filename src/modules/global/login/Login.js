@@ -29,7 +29,7 @@ const Login = () => {
             const response = await axios.post(apiUrls.loginAdmUrl, formValues, requestOptions);
 
             // Armazenar o token no cookie
-            Cookies.set('token', response.data.retorno.registros.token, { expires: 2, secure: false, sameSite: 'Lax' });
+            Cookies.set('token', response.data.retorno.registros.token, { expires: 2, secure: true, sameSite: 'Strict' });
 
             // Redirecionar para a página inicial
             alertaSucesso(response.data.retorno.mensagem);
